@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { fetchPosts, Post } from "./json-placeholder.service";
+import { mockPosts } from "@/test-helpers/mock-posts";
 
 const mockAxiosGet = vi.fn();
 
@@ -18,9 +19,7 @@ describe("jsonPlaceholderService", () => {
 
   describe("fetchPosts", () => {
     it("should return posts if axios resolves", async () => {
-      const expected: Post[] = [
-        { id: 1, body: "test", title: "test", userId: 1 },
-      ];
+      const expected: Post[] = mockPosts;
 
       mockAxiosGet.mockResolvedValue({ data: expected });
 
