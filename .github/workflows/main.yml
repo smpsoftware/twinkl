@@ -31,4 +31,4 @@ jobs:
       - name: Build the application
         run: yarn build
       - name: Run tests
-        run: yarn test --ci --watch=false
+        run: yarn test --watch=false
