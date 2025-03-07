@@ -1,13 +1,15 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { fetchPosts, Post } from "./json-placeholder.service";
+import { deletePost, fetchPosts, Post } from "./json-placeholder.service";
 import { mockPosts } from "@/test-helpers/mock-posts";
 
 const mockAxiosGet = vi.fn();
+const mockAxiosDelete = vi.fn();
 
 vi.mock("axios", () => ({
   default: {
     create: () => ({
       get: () => mockAxiosGet(),
+      delete: () => mockAxiosDelete()
     }),
   },
 }));
@@ -31,6 +33,23 @@ describe("jsonPlaceholderService", () => {
     it("should throw an error if axios rejects", async () => {
       mockAxiosGet.mockRejectedValue("an error occurred");
       expect(async () => await fetchPosts()).rejects.toThrowError(
+        "an error occurred",
+      );
+    });
+  });
+
+  describe("deletePosts", () => {
+    it("should return 'post deleted' if axios resolves", async () => {
+      mockAxiosDelete.mockResolvedValue({});
+
+      const received = await deletePost(1);
+
+      expect(received).toEqual('post deleted');
+    });
+
+    it("should throw an error if axios rejects", async () => {
+      mockAxiosDelete.mockRejectedValue("an error occurred");
+      expect(async () => await deletePost(1)).rejects.toThrowError(
         "an error occurred",
       );
     });
