@@ -1,0 +1,57 @@
+.table {
+  max-width: 50%;
+  font-family: sans-serif;
+  border: 1px solid #e6e6e6;
+  padding: 20px;
+}
+
+@media (max-width: 1024px) {
+  .table {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .table {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .table {
+    max-width: 100%;
+  }
+}
+
+.tableContentWrapper {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.tableContentTitle {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tableContentBody {
+  font-size: 12px;
+}
+
+.searchWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.deleteButton {
+  border: 1px solid #e6e6e6;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  border: 1px solid #e6e6e6;
+  background-color: #e6e6e6;
+  cursor: pointer;
+}

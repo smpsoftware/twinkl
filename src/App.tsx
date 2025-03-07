@@ -1,20 +1,13 @@
-import styled from "styled-components";
 import { Table } from "./components/table/table.component";
+import * as styles from "./app.module.css";
 
-const AppWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
-  height: 100vh;
-`;
 const App = () => {
   return (
-    <AppWrapper>
-      <h1>Hello Twinkl!</h1>
-      <Table />
-    </AppWrapper>
+    <div className={styles.app}>
+      <div className={styles.wrapper}>
+        <Table />
+      </div>
+    </div>
   );
 };
 
