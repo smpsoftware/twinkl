@@ -9,7 +9,7 @@ vi.mock("axios", () => ({
   default: {
     create: () => ({
       get: () => mockAxiosGet(),
-      delete: () => mockAxiosDelete()
+      delete: () => mockAxiosDelete(),
     }),
   },
 }));
@@ -38,13 +38,13 @@ describe("jsonPlaceholderService", () => {
     });
   });
 
-  describe("deletePosts", () => {
+  describe("deletePost", () => {
     it("should return 'post deleted' if axios resolves", async () => {
       mockAxiosDelete.mockResolvedValue({});
 
       const received = await deletePost(1);
 
-      expect(received).toEqual('post deleted');
+      expect(received).toEqual("post deleted");
     });
 
     it("should throw an error if axios rejects", async () => {

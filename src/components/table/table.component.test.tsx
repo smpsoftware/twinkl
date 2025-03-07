@@ -1,28 +1,21 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { Table } from "./table.component";
 import { mockPosts } from "@/test-helpers/mock-posts";
-import { Post } from "@/services/json-placeholder/json-placeholder.service";
 
-const mockFetchPosts = vi.fn();
-const mockFilterPosts = vi.fn();
+const mockDeletePostById = vi.fn();
+const mockSearchForPostByTitle = vi.fn();
 
-vi.mock("@/helpers/filter-posts/filter-posts.helper", () => ({
-  filterPosts: (searchTerm: string, posts: Post[]) =>
-    mockFilterPosts(searchTerm, posts),
-}));
-vi.mock("@/services/json-placeholder", () => ({
-  jsonPlaceholderService: {
-    fetchPosts: () => mockFetchPosts(),
-  },
+vi.mock("./table.hook", () => ({
+  useTable: () => ({
+    filteredData: mockPosts,
+    searchForPostByTitle: (searchTerm: string) =>
+      mockSearchForPostByTitle(searchTerm),
+    deletePostById: (id: number) => mockDeletePostById(id),
+  }),
 }));
 
 describe("Table", () => {
-  beforeEach(() => {
-    mockFetchPosts.mockResolvedValue(mockPosts);
-    mockFilterPosts.mockReturnValue(mockPosts);
-  });
-
   afterEach(() => {
     vi.restoreAllMocks();
   });
@@ -38,14 +31,25 @@ describe("Table", () => {
     });
   });
 
-  it("should filter posts based on the search term", async () => {
+  it("should searchForPostByTitle based on the search term", async () => {
     render(<Table />);
 
     const searchInput = screen.getByLabelText("Search");
     fireEvent.change(searchInput, { target: { value: "Test search" } });
 
     await waitFor(() => {
-      expect(mockFilterPosts).toHaveBeenCalledWith("Test search", mockPosts);
+      expect(mockSearchForPostByTitle).toHaveBeenCalledWith("Test search");
+    });
+  });
+
+  it("should call deletePost when delete button is clicked", async () => {
+    render(<Table />);
+
+    const deleteButtons = screen.getAllByRole("button");
+    fireEvent.click(deleteButtons[0]);
+
+    await waitFor(() => {
+      expect(mockDeletePostById).toHaveBeenCalledWith(1);
     });
   });
 });

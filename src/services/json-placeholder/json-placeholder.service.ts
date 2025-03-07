@@ -22,9 +22,9 @@ export const fetchPosts = async (): Promise<Post[]> => {
 
 export const deletePost = async (postId: number) => {
   try {
-    await jsonPlaceholderService.delete(`/posts/${postId}`)
-    return 'post deleted'
+    await jsonPlaceholderService.delete(`/posts/${postId}`);
+    return "post deleted";
   } catch (error) {
     throw new Error("an error occurred");
   }
-}
+};

@@ -1,21 +1,7 @@
-import { filterPosts } from "@/helpers/filter-posts/filter-posts.helper";
-import { jsonPlaceholderService } from "@/services/json-placeholder";
-import { useEffect, useState } from "react";
+import { useTable } from "./table.hook";
 
 export const Table = () => {
-  const [data, setData] = useState<jsonPlaceholderService.Post[]>([]);
-  const [searchTerm, setSearchTerm] = useState<string>("");
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await jsonPlaceholderService.fetchPosts();
-
-      if (result) {
-        setData(result);
-      }
-    };
-    fetchData();
-  }, []);
+  const { filteredData, deletePostById, searchForPostByTitle } = useTable();
 
   return (
     <table>
@@ -28,16 +14,24 @@ export const Table = () => {
           <input
             id="search"
             type="string"
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => searchForPostByTitle(e.target.value)}
           />
         </td>
       </tr>
 
-      {data &&
-        filterPosts(searchTerm, data).map((post) => (
+      {filteredData &&
+        filteredData.map((post) => (
           <tr key={post.id}>
             <td>{post.title}</td>
             <td>{post.body}</td>
+            <td>
+              <button
+                role="button"
+                onClick={async () => await deletePostById(post.id)}
+              >
+                Delete
+              </button>
+            </td>
           </tr>
         ))}
     </table>
