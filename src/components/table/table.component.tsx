@@ -8,7 +8,7 @@ export const Table = () => {
     <table className={styles.table}>
       <tbody>
         <tr>
-          <td className={styles.searchWrapper}>
+          <td className={styles.searchWrapper} colSpan={2}>
             <label htmlFor="search">Search</label>
             <input
               id="search"
@@ -25,7 +25,7 @@ export const Table = () => {
                 <span className={styles.tableContentTitle}>{post.title}</span>
                 <span className={styles.tableContentBody}>{post.body}</span>
               </td>
-              <td>
+              <td className={styles.buttonWrapper}>
                 <button
                   role="button"
                   className={styles.deleteButton}

@@ -13,7 +13,9 @@
     "lint": "eslint --quiet --cache --report-unused-disable-directives src/**/*.{ts,tsx}",
     "lint:fix": "eslint --fix --quiet --cache --report-unused-disable-directives src/**/*.{ts,tsx}",
     "format": "prettier --write --ignore-unknown .",
-    "test": "vitest"
+    "test:unit": "vitest",
+    "test:e2e": "cypress open",
+    "test:cypress": "cypress"
   },
   "dependencies": {
     "axios": "^1.8.2",
@@ -33,6 +35,7 @@
     "@typescript-eslint/eslint-plugin": "^6.20.0",
     "@typescript-eslint/parser": "^6.20.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "cypress": "^14.1.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",

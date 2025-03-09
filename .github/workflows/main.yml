@@ -30,5 +30,7 @@ jobs:
         run: yarn install
       - name: Build the application
         run: yarn build
-      - name: Run tests
-        run: yarn test --watch=false
+      - name: Run unit tests
+        run: yarn test:unit --watch=false
+      - name: Run e2e test
+        run: yarn test:cypress
