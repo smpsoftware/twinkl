@@ -31,7 +31,7 @@ export const Table = () => {
                   className={styles.deleteButton}
                   onClick={async () => await deletePostById(post.id)}
                 >
-                  Delete
+                  Remove
                 </button>
               </td>
             </tr>

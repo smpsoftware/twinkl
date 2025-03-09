@@ -29,4 +29,12 @@ There are a few considerations I would expect to happen before starting on this 
 ### Notes
 
 .env file would be included in the .gitignore
-styling would likely be done as part of each ticket but I have opted to build the functionality before focusing on styling due to time constraints
+Styling would likely be done as part of each ticket but I have opted to build the functionality before focusing on styling due to time constraints.
+
+### What next?
+
+I would spend some time creating a design for the table including a loading state and an error state. I'd also include designs for the remove button states including a loading state and a message to indicate a post was successfully deleted.
+
+I'd change table elements and use flexible box layout instead since it gives more freedom with styling and improves readability.
+
+I would improve the app design and resolve the layout shift that happens when searching for posts.

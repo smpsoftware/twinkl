@@ -93,8 +93,24 @@ yarn lint:fix
 yarn format
 ```
 
-#### Test: Run the test suite.
+#### Test: Run the unit test suite.
 
 ```
-yarn test
+yarn test:unit
 ```
+
+#### Test: Run the e2e test suite.
+
+```
+yarn test:e2e
+```
+
+### Using the application
+
+Once the application is running (after running yarn run dev) navigate to http://localhost:5173/
+
+There you will see a list of posts from the JSON placeholder endpoint.
+
+You can use the "Search" input to filter these posts by their title.
+
+You can use the "Remove" button to send a DELETE request (this does not remove the post data)
