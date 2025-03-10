@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const jsonPlaceholderService = axios.create({
-  baseURL: process.env.REACT_APP_JSON_PLACEHOLDER_URL,
+  baseURL: "https://jsonplaceholder.typicode.com",
 });
 
 export type Post = {

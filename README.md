@@ -114,3 +114,36 @@ There you will see a list of posts from the JSON placeholder endpoint.
 You can use the "Search" input to filter these posts by their title.
 
 You can use the "Remove" button to send a DELETE request (this does not remove the post data)
+
+### Consuming the application inside a host
+
+The table is exposed as a micro frontend using module federation. To consume the module you will need to add it as a remote to the project.
+
+https://module-federation.io/guide/start/quick-start.html
+
+rsbuild.config.ts may look like this.
+
+```
+
+import { defineConfig } from '@rsbuild/core';
+import { pluginReact } from '@rsbuild/plugin-react';
+import { pluginModuleFederation } from '@module-federation/rsbuild-plugin';
+
+export default defineConfig({
+  plugins: [
+    pluginReact(),
+    pluginModuleFederation({
+      name: 'jsonTable',
+      remotes: {
+        jsonTable:
+          jsonTable@http://localhost:3000/mf-manifest.json',
+      },
+      shared: ['react', 'react-dom'],
+    }),
+  ],
+  server: {
+    port: 2000,
+  },
+});
+
+```

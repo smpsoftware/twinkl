@@ -1,5 +1,5 @@
 import { useTable } from "./table.hook";
-import * as styles from "./table.module.css";
+import styles from "./table.module.css";
 
 export const Table = () => {
   const { filteredData, deletePostById, searchForPostByTitle } = useTable();
