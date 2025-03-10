@@ -35,6 +35,4 @@ Styling would likely be done as part of each ticket but I have opted to build th
 
 I would spend some time creating a design for the table including a loading state and an error state. I'd also include designs for the remove button states including a loading state and a message to indicate a post was successfully deleted.
 
-I'd change table elements and use flexible box layout instead since it gives more freedom with styling and improves readability.
-
-I would improve the app design and resolve the layout shift that happens when searching for posts.
+There are other features that could be added such as, opening an individual post using the /posts/{id} endpoint, updating a post using the PUT method and creating a new post using the POST method. Since JSONPlaceholder doesn't actually create, delete or update data in the background, there wouldn't be any feedback to show these methods were working.
