@@ -4,7 +4,7 @@
   border: 1px solid #e6e6e6;
   padding: 0 20px 0 20px;
   min-width: 300px;
-  background-color: #2399F9;
+  background-color: #2399f9;
   overflow-y: auto;
 }
 
@@ -57,7 +57,7 @@
   flex-direction: column;
   align-items: center;
   padding: 15px;
-  background-color: #2399F9;
+  background-color: #2399f9;
   color: #fff;
   position: sticky;
   top: 0;
@@ -76,7 +76,7 @@
 
 .deleteButton:hover {
   border: 1px solid #e6e6e6;
-  background-color: #2399F9;
+  background-color: #2399f9;
   color: #fff;
   cursor: pointer;
 }
