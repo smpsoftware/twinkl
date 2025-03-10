@@ -11,11 +11,7 @@ export default defineConfig({
       exposes: {
         "./Table": "./src/components/table/table.component.tsx",
       },
-      shared: [
-        { react: { eager: true, singleton: true } },
-        "react-dom",
-        "vite",
-      ],
+      shared: ["react", "react-dom"],
     }),
   ],
   server: {

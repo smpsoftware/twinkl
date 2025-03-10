@@ -26,11 +26,6 @@ There are a few considerations I would expect to happen before starting on this 
 2. Clarifying any unknowns (for example, does the search functionality need to hook up to the API? In this example, I would expect that it wouldn't and a simple table search function would be suitable and much more performant / cost effective)
 3. What should the component look like? Are there designs?
 
-### Notes
-
-.env file would be included in the .gitignore
-Styling would likely be done as part of each ticket but I have opted to build the functionality before focusing on styling due to time constraints.
-
 ### What next?
 
 I would spend some time creating a design for the table including a loading state and an error state. I'd also include designs for the remove button states including a loading state and a message to indicate a post was successfully deleted.
