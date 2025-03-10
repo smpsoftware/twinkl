@@ -29,4 +29,10 @@ There are a few considerations I would expect to happen before starting on this 
 ### Notes
 
 .env file would be included in the .gitignore
-styling would likely be done as part of each ticket but I have opted to build the functionality before focusing on styling due to time constraints
+Styling would likely be done as part of each ticket but I have opted to build the functionality before focusing on styling due to time constraints.
+
+### What next?
+
+I would spend some time creating a design for the table including a loading state and an error state. I'd also include designs for the remove button states including a loading state and a message to indicate a post was successfully deleted.
+
+There are other features that could be added such as, opening an individual post using the /posts/{id} endpoint, updating a post using the PUT method and creating a new post using the POST method. Since JSONPlaceholder doesn't actually create, delete or update data in the background, there wouldn't be any feedback to show these methods were working.

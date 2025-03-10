@@ -1,39 +1,37 @@
 import { useTable } from "./table.hook";
+import * as styles from "./table.module.css";
 
 export const Table = () => {
   const { filteredData, deletePostById, searchForPostByTitle } = useTable();
 
   return (
-    <table>
-      <tr>
-        <th>Item</th>
-      </tr>
-      <tr>
-        <td>
-          <label htmlFor="search">Search</label>
-          <input
-            id="search"
-            type="string"
-            onChange={(e) => searchForPostByTitle(e.target.value)}
-          />
-        </td>
-      </tr>
-
+    <div className={styles.table}>
+      <div className={styles.searchWrapper}>
+        <label htmlFor="search">Search</label>
+        <input
+          id="search"
+          type="string"
+          onChange={(e) => searchForPostByTitle(e.target.value)}
+        />
+      </div>
       {filteredData &&
         filteredData.map((post) => (
-          <tr key={post.id}>
-            <td>{post.title}</td>
-            <td>{post.body}</td>
-            <td>
+          <div key={post.id} className={styles.postWrapper}>
+            <div className={styles.postContentWrapper}>
+              <span className={styles.postContentTitle}>{post.title}</span>
+              <span className={styles.postContentBody}>{post.body}</span>
+            </div>
+            <div className={styles.buttonWrapper}>
               <button
                 role="button"
+                className={styles.deleteButton}
                 onClick={async () => await deletePostById(post.id)}
               >
-                Delete
+                Remove
               </button>
-            </td>
-          </tr>
+            </div>
+          </div>
         ))}
-    </table>
+    </div>
   );
 };
