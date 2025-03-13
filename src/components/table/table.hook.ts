@@ -1,6 +1,6 @@
 import { filterPosts } from "@/helpers/filter-posts/filter-posts.helper";
 import { jsonPlaceholderService } from "@/services/json-placeholder";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 interface TableState {
   filteredData: jsonPlaceholderService.Post[];
@@ -24,7 +24,7 @@ export const useTable = (): TableState => {
     //local storage 
     const fetchData = async () => {
       setLoading(true)
-      const result = await jsonPlaceholderService.fetchPosts(currentPage);
+      const result = await useMemo(async () => await jsonPlaceholderService.fetchPosts(currentPage), [currentPage]) 
 
       if (result) {
         setData(result.posts);
