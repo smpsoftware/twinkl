@@ -11,10 +11,27 @@ export type Post = {
   userId: number;
 };
 
-export const fetchPosts = async (): Promise<Post[]> => {
+interface FetchPostsResponse {
+  totalPages: number
+  posts: Post[]
+}
+//?_start=x
+
+//?_page=1
+
+export const fetchPosts = async (page: number, postsPerPage = 10): Promise<FetchPostsResponse> => {
   try {
-    const response = await jsonPlaceholderService.get("/posts");
-    return response.data;
+    const response = await jsonPlaceholderService.get(`/posts?_page=${page}&post_per_page=${postsPerPage}`);
+    const headers = response.headers
+
+    const totalPosts = headers['x-total-count']
+
+    const totalPages = Math.ceil(totalPosts / postsPerPage)
+
+    return {
+      totalPages,
+      posts: response.data
+    };
   } catch (error) {
     throw new Error("an error occurred");
   }

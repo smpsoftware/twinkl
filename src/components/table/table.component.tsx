@@ -2,7 +2,7 @@ import { useTable } from "./table.hook";
 import styles from "./table.module.css";
 
 export const Table = () => {
-  const { filteredData, deletePostById, searchForPostByTitle } = useTable();
+  const { filteredData, deletePostById, searchForPostByTitle, selectNextPage, selectPreviousPage, currentPage, totalPages } = useTable();
 
   return (
     <div className={styles.table}>
@@ -32,6 +32,8 @@ export const Table = () => {
             </div>
           </div>
         ))}
+        {currentPage > 1 && <button onClick={() => selectPreviousPage()}>Previous page</button>}
+        {currentPage < totalPages && <button onClick={() => selectNextPage()}>Next page</button>}
     </div>
   );
 };

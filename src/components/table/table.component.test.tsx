@@ -52,4 +52,16 @@ describe("Table", () => {
       expect(mockDeletePostById).toHaveBeenCalledWith(1);
     });
   });
+
+  it("should render a 'next page' button if more than 10 posts are returned", () => {
+    render(<Table/>)
+
+    expect(screen.getByText('Next page')).toBeInTheDocument()
+  })
+
+  it("should NOT render a 'next page' button if fewer than 10 posts are returned", () => {
+    render(<Table/>)
+
+    expect(screen.getByText('Next page')).toBeInTheDocument()
+  })
 });

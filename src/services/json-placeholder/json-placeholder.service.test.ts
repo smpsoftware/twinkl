@@ -25,14 +25,14 @@ describe("jsonPlaceholderService", () => {
 
       mockAxiosGet.mockResolvedValue({ data: expected });
 
-      const received = await fetchPosts();
+      const received = await fetchPosts(1);
 
       expect(received).toEqual(expected);
     });
 
     it("should throw an error if axios rejects", async () => {
       mockAxiosGet.mockRejectedValue("an error occurred");
-      expect(async () => await fetchPosts()).rejects.toThrowError(
+      expect(async () => await fetchPosts(1)).rejects.toThrowError(
         "an error occurred",
       );
     });
